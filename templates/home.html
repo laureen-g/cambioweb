@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câmbio</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h3>Câmbio Eletrônico</h3>
+
+
+        {% for key, dado in dados.rates.items %}
+            {{key}} - {{dado}}
+        {% endfor %}
+
+    </div>
+</body>
+</html>
