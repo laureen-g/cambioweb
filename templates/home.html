@@ -8,6 +8,15 @@
     <div style="text-align: center;">
         <h3>Câmbio Eletrônico</h3>
 
+        <form action="cambioweb/views.py">
+            <div>
+                {{ form.moeda }}
+            </div>
+            <div>
+                {{ form.valor }}
+            </div>
+        </form>
+
 
         {% for key, dado in dados.rates.items %}
             {{key}} - {{dado}}

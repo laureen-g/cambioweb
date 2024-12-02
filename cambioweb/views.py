@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 import json
+from cambioweb.form import Form
 
 # Create your views here.
 
@@ -8,8 +9,11 @@ def home(request):
 
     cambios = busca_api()
     dados = json.loads(cambios.content.decode('utf-8'))
+    choices = busca_moedas(dados['rates'])
+    form = Form(choices=choices)
 
-    return render(request, 'home.html', {'dados': dados})
+
+    return render(request, 'home.html', {'dados': dados, 'form': form})
 
 
 def busca_api():
@@ -24,3 +28,12 @@ def busca_api():
         print("Erro de aquisição: ", response.status_code)
 
     return response
+
+def busca_moedas(moedas):
+
+    dic = {}
+
+    for moeda in moedas:
+        dic[moeda] = moeda
+
+    return dic
